@@ -7,9 +7,13 @@ jobs:
         steps:
         - name: Welcome
           run: echo "Hello World from GitHub Actions"
-        - name: list files
-          run: ls
         - name: pwd
           run: pwd
+        - name: list files
+          run: ls
+        - name: Checkout
+          uses: actions/checkout@v6.0.2
+        - name: ls files
+          run: ls -lart
         - name: Read file
           run: cat README.md
