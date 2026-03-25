@@ -1,4 +1,4 @@
-name: the first workflow
+name: Generate ASCII ArtWork
 on: push
 
 jobs:
@@ -11,14 +11,15 @@ jobs:
           run: pwd
         - name: Checkout
           uses: actions/checkout@v6.0.2
-        - name: List and read file
-          run: |
-            echo "Running some commands"
-            ls -lart
-            pwd
-            echo "cat README.md"
-            cat README.md
+
+        - name: Install Cowsay Program
+          run: sudo apt-get install cowsay -y
             
         - name: Generate ASCII Artwork
           run: cowsay -f dragon "Run for cover, Hello! I'm a Dragon... grrrr!" >> dragon.txt
+        
+        - name: Read Dragon File
+          run: cat dragon.txt
 
+        - name: List Repo Files
+          run: ls -ltra
