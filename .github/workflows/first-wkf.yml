@@ -9,18 +9,14 @@ jobs:
           run: echo "Hello World from GitHub Actions"
         - name: pwd
           run: pwd
-        - name: list files
-          run: ls
         - name: Checkout
           uses: actions/checkout@v6.0.2
-        - name: ls files
-          run: ls -lart
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "Run for cover, Hello! I'm a Dragon... grrrr!" >> dragon.txt
-          
         - name: List and read file
           run: |
             echo "Running some commands"
             ls -lart
             pwd
             cat README.md
+        - name: Generate ASCII Artwork
+          run: cowsay -f dragon "Run for cover, Hello! I'm a Dragon... grrrr!" >> dragon.txt
+
