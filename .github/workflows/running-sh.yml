@@ -38,38 +38,10 @@ jobs:
 
         - name: Executing Shell Script
           run: |
-            chmod +x ascii.script.sh
+            chmod +x ascii.script2.sh
             ./ascii.script2.sh
             sleep10
 
-    test_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Welcome
-          run: echo "Hello World! from GitHub Actions"
-
-        - name: sleep 30 secs
-          run: sleep 30
-
-    test_job2:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Welcome
-          run: echo "Hello World! from GitHub Actions"
-
-        - name: sleep 15 secs
-          run: sleep 15
-
-    deploy_job:
-        runs-on: ubuntu-latest
-        steps:
-        - name: Welcome
-          run: echo "Hello World! from GitHub Actions"
-
-        - name: sleep 30 secs
-          run: sleep 30
-        - name: test file dragon
-          run: grep -i "dragon" dragon.txt
-          
+ 
 
 
