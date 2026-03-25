@@ -40,7 +40,7 @@ jobs:
           run: |
             chmod +x ascii.script2.sh
             ./ascii.script2.sh
-            sleep10
+            sleep 10
 
  
 
