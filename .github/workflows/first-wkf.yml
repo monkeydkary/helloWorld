@@ -18,7 +18,5 @@ jobs:
             pwd
             echo "cat README.md"
             cat README.md
-            
-        - name: Generate ASCII Artwork
-          run: cowsay -f dragon "Run for cover, Hello! I'm a Dragon... grrrr!" >> dragon.txt
+
 
