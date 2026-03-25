@@ -2,7 +2,7 @@ name: Generate ASCII ArtWork executing sh
 on: push
 
 jobs:
-    ascii_job:
+    build_job:
         runs-on: ubuntu-latest
         steps:
         - name: Welcome
@@ -21,9 +21,6 @@ jobs:
             
         - name: Generate ASCII Artwork
           run: cowsay -f dragon "Run for cover, Hello! I'm a Dragon... grrrr!" >> dragon.txt
-        
-        - name: Read Dragon File
-          run: cat dragon.txt
 
         - name: List Repo Files
           run: ls -ltra
@@ -34,7 +31,16 @@ jobs:
             ./ascii.script.sh
             sleep 10
 
-    ascii_job2:
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v7.0.0
+          with:
+            name: dragon - tux
+            path: |
+                dragon.txt
+                tux.txt
+
+
+    build_job2:
         runs-on: ubuntu-latest
         steps:
         - name: Welcome
@@ -50,30 +56,49 @@ jobs:
 
         - name: Executing Shell Script
           run: |
-            chmod +x ascii.script.sh
+            chmod +x ascii.script2.sh
             ./ascii.script2.sh
-            sleep10
+            sleep 10
+
+        - name: Upload a Build Artifact
+          uses: actions/upload-artifact@v7.0.0
+          with:
+            name: dino
+            path: dino
 
     test_job:
-        needs: ascii_job
+        needs: build_job
         runs-on: ubuntu-latest
         steps:
         - name: Welcome
           run: echo "Hello World! from GitHub Actions"
 
-        - name: sleep 30 secs
-          run: sleep 30
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v8.0.1
+          with: 
+            name: tux - dragon
+            path: |
+                tux.txt
+                dragon.txt
+
         - name: Test dragon file exists
           run: grep -i "dragon" dragon.txt
+        - name: Test tux file exists
+          run: grep -i "tux" tuxt.xt
+
 
     test_job2:
         runs-on: ubuntu-latest
+        needs: build_job2
         steps:
         - name: Welcome
           run: echo "Hello World! from GitHub Actions"
 
-        - name: sleep 15 secs
-          run: sleep 15
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v8.0.1
+          with: 
+            name: dino
+            path: dino
         - name: Test dino file exists
           run: grep -i "dino" dino.txt
 
@@ -83,10 +108,21 @@ jobs:
         steps:
         - name: text
           run: echo "Deploying"
+        
+        - name: Download a Build Artifact
+          uses: actions/download-artifact@v8.0.1
+          with: 
+            name: 
+                |
+                tux - dragon
+                dino
 
         - name: test file dragon
           run: cat dragon.txt
 
+        - name: test tuxfile
+          run: cat tux.txt
+        
         - name: test dino file
           run: cat dino.txt
           

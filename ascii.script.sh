@@ -1,7 +1,7 @@
 #/bin/sh
 sudo apt-get install cowsay -y
 cowsay -l
-cowsay -f dragon "C'est moi un Dragon! Running by script" >> grrr.txt
-grep -i "grrr" grrr.txt
-cat grrr.txt
+cowsay -f tux "C'est moi un Dragon! Running by script" >> tux.txt
+grep -i "tux" tux.txt
+cat tux.txt
 ls
