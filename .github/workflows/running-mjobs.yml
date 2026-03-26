@@ -30,7 +30,6 @@ jobs:
         uses: actions/download-artifact@v8.0.1
         with:
             name: dragon-text-file
-            path: dragon.txt
 
       - name: List Repo Files
         run: ls -ltra
@@ -41,7 +40,13 @@ jobs:
       needs: test_job
       runs-on: ubuntu-latest
       steps:
-        - name: Read Dragon File
-          run: cat dragon.txt
+      - name: Download a Build Artifact
+        uses: actions/download-artifact@v8.0.1
+        with:
+            name: dragon-text-file
+      - name: Read Dragon File
+        run: cat dragon.txt
+      - name: Done!
+        run: echo "Deploying . . ."
 
 
