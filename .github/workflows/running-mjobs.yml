@@ -1,4 +1,4 @@
-name: Generate ASCII ArtWork
+name: Generate ASCII ArtWork -artifacs-
 on: push
 
 jobs:
@@ -46,7 +46,9 @@ jobs:
             name: dragon-text-file
       - name: Read Dragon File
         run: cat dragon.txt
-      - name: Done!
-        run: echo "Deploying . . ."
+      - name: Done
+        run: |
+          echo "carefully a dragon walks free".
+          echo "Deployment completed!"
 
 
